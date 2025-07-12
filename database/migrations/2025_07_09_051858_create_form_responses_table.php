@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('form_id')->constrained()->onDelete('cascade');
             $table->string('user_ip')->nullable();  // IP ثبت کننده
+            $table->timestamp('submitted_at')->nullable();
             $table->timestamps();
         });
     }

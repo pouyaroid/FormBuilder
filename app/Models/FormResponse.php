@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormResponse extends Model
 {
-    protected $fillable = ['form_id', 'user_ip'];
+    protected $fillable = ['form_id', 'user_ip','submitted_at'];
 
     public function form()
     {

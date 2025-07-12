@@ -5,55 +5,14 @@
   <title>{{ $form->title }}</title>
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Vazir', sans-serif;
-      background: #f2f2f2;
-      padding: 2rem;
-      direction: rtl;
-    }
-    .form-wrapper {
-      background: white;
-      max-width: 700px;
-      margin: auto;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: .7rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: .5rem;
-      font-family: 'Vazir';
-    }
-    input[type="radio"],
-    input[type="checkbox"] {
-      width: auto;
-      margin-left: 0.5rem;
-    }
-    label {
-      display: block;
-      margin-bottom: .3rem;
-      font-weight: bold;
-    }
-    button {
-      background: #28a745;
-      color: white;
-      padding: .7rem 2rem;
-      border: none;
-      border-radius: .5rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #218838;
-    }
-    .error {
-      color: red;
-      font-size: 0.9rem;
-      margin-top: -0.5rem;
-      margin-bottom: 0.5rem;
-    }
+    body { font-family: 'Vazir', sans-serif; background: #f2f2f2; padding: 2rem; direction: rtl; }
+    .form-wrapper { background: white; max-width: 700px; margin: auto; padding: 2rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input, select, textarea { width: 100%; padding: .7rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: .5rem; font-family: 'Vazir'; }
+    input[type="radio"], input[type="checkbox"] { width: auto; margin-left: 0.5rem; }
+    label { display: block; margin-bottom: .3rem; font-weight: bold; }
+    button { background: #28a745; color: white; padding: .7rem 2rem; border: none; border-radius: .5rem; cursor: pointer; }
+    button:hover { background: #218838; }
+    .error { color: red; font-size: 0.9rem; margin-top: -0.5rem; margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>

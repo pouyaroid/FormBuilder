@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('form_response_id')->constrained()->onDelete('cascade');
             $table->string('field_name'); // name="email"
+            $table->string('field_label')->nullable();
             $table->text('field_value')->nullable(); // محتوای فیلد (متن، شماره، ... یا آدرس فایل)
             $table->timestamps();
         });

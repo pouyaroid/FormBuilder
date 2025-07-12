@@ -20,6 +20,7 @@
       text-align: right;
       padding: 2rem;
     }
+
     .form-builder-container {
       background: white;
       padding: 2rem;
@@ -28,6 +29,11 @@
       max-width: 900px;
       margin: auto;
     }
+
+    input, button {
+      font-family: 'Vazir', sans-serif;
+    }
+
     #save-form {
       background-color: #007bff;
       color: white;
@@ -37,9 +43,11 @@
       cursor: pointer;
       margin-top: 1rem;
     }
+
     #save-form:hover {
       background-color: #0056b3;
     }
+
     #form-response {
       margin-top: 1rem;
       padding: 1rem;
@@ -73,48 +81,72 @@
   <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
 
   <script>
-    $(function() {
+    $(function () {
       const options = {
         showActionButtons: true,
-        showActionButtonsOnHover: true,
-        stickyControls: {
-          enable: true,
-        },
         controlOrder: [
-          'header',
-          'paragraph',
-          'text',
-          'textarea',
-          'number',
-          'date',
-          'select',
-          'checkbox-group',
-          'radio-group',
-          'file',
-          'button'
+          'header', 'paragraph', 'text', 'number', 'textarea', 'select',
+          'checkbox-group', 'radio-group', 'date', 'file', 'button'
         ],
         i18n: {
           locale: 'fa',
           strings: {
             add: "افزودن",
             remove: "حذف",
+            save: "ذخیره",
             edit: "ویرایش",
+            cancel: "لغو",
+            close: "بستن",
             required: "الزامی",
             options: "گزینه‌ها",
-            // ... می‌تونی بیشتر اضافه کنی
+            label: "برچسب",
+            className: "کلاس CSS",
+            placeholder: "متن پیش‌فرض",
+            description: "توضیحات",
+            type: "نوع فیلد",
+            subtype: "زیرنوع",
+            text: "متن",
+            textarea: "متن چندخطی",
+            header: "عنوان",
+            paragraph: "پاراگراف",
+            number: "عدد",
+            date: "تاریخ",
+            select: "لیست کشویی",
+            checkboxGroup: "چک‌باکس گروهی",
+            radioGroup: "دکمه‌های رادیویی",
+            file: "فایل",
+            name: "نام فیلد",
+            access: "دسترسی",
+            other: "سایر",
+            selectOptions: "گزینه‌های انتخابی",
+            inline: "افقی",
+            multiple: "چند انتخابی",
+            toggle: "تغییر وضعیت",
+            addOption: "افزودن گزینه",
+            removeOption: "حذف گزینه",
+            defaultValue: "مقدار پیش‌فرض",
+            value: "مقدار",
+            advanced: "پیشرفته",
+            requiredField: "فیلد الزامی",
+            preview: "پیش‌نمایش",
+            form: "فرم",
+            button: "دکمه",
+            style: "استایل"
           }
         }
       };
 
       const formBuilder = $('#form-builder').formBuilder(options);
 
-      $('#save-form').click(async function() {
+      $('#save-form').click(async function () {
         const title = $('#form-title').val().trim();
         if (!title) {
           alert('عنوان فرم را وارد کنید!');
           return;
         }
+
         const formData = formBuilder.actions.getData('json');
+
         try {
           const response = await fetch("{{ route('forms.store') }}", {
             method: 'POST',
@@ -127,15 +159,16 @@
               schema: formData
             })
           });
+
           const data = await response.json();
           if (response.ok) {
-            $('#form-response').text("فرم با موفقیت ذخیره شد. لینک فرم: " + data.link).show();
+            $('#form-response').text("✅ فرم با موفقیت ذخیره شد. لینک فرم: " + data.link).show();
             $('#form-title').val('');
           } else {
-            alert('خطا در ذخیره فرم: ' + (data.message || ''));
+            alert('❌ خطا در ذخیره فرم: ' + (data.message || ''));
           }
-        } catch(err) {
-          alert('خطا در ارتباط با سرور');
+        } catch (err) {
+          alert('❌ خطا در ارتباط با سرور');
           console.error(err);
         }
       });
